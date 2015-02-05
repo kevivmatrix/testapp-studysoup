@@ -1,0 +1,12 @@
+development:
+  adapter: postgresql
+  host: localhost
+  database: magicbox_contest_development
+  username: postgres
+  password: vivek
+test:
+  adapter: postgresql
+  host: localhost
+  database: magicbox_contest_test
+  username: postgres
+  password: vivek
