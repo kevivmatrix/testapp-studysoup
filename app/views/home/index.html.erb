@@ -1,5 +1,17 @@
 <div id="content_wrapper">
-  <div id="left_pane"></div>
+  <div id="left_pane">
+    <%= form_tag products_path do %>
+      <div class="form-group">
+        <%= text_field_tag :query, nil, placeholder: "Search", "class" => "form-control" %>
+      </div>
+      <% Product.filter_enum.each do |filter| %>
+        <div>
+          <%= check_box_tag(:filter) %>
+          <%= label_tag(:filter, filter) %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
   <div id="right_pane"></div>
 </div>
 
