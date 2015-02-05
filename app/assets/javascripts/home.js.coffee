@@ -40,7 +40,7 @@ $ ->
   fetch_and_render_products()
 
   typing_timer = null
-  done_typing_interval = 500
+  done_typing_interval = 1000
 
   done_typing = ->
     testapp.current_query = $("#query_text_field").val()
