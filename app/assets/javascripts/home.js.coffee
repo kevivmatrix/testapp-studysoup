@@ -39,9 +39,19 @@ $ ->
   testapp.collection.product_object = new testapp.collection.product()
   fetch_and_render_products()
 
-  $("#query_text_field").keyup ->
+  typing_timer = null
+  done_typing_interval = 500
+
+  done_typing = ->
     testapp.current_query = $("#query_text_field").val()
     fetch_and_render_products()
+
+  $('#query_text_field').keyup ->
+    clearTimeout typing_timer
+    typing_timer = setTimeout(done_typing, done_typing_interval)
+
+  $('#query_text_field').keydown ->
+    clearTimeout typing_timer
 
   $(".filter_checkbox").change ->
     testapp.current_filter = _.map $('input[name="filter"]:checked'), (element)->
