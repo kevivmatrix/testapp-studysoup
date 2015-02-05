@@ -19,6 +19,7 @@ $ ->
   testapp.current_filter = []
 
   fetch_and_render_products = ()->
+    $("#loader").show()
     clear_products_view()
     $.ajax "/products.json",
       data:
@@ -26,13 +27,14 @@ $ ->
         filter: testapp.current_filter
       success: (response)->
         testapp.collection.product_object.reset(response)
+        $("#loader").hide()
         _.each testapp.collection.product_object.models, (model)->
           view = new testapp.view.product
             model: model
-          $("#right_pane").append view.render().el
+          $("#products").append view.render().el
 
   clear_products_view = ()->
-    $("#right_pane").empty()
+    $("#products").empty()
 
   testapp.collection.product_object = new testapp.collection.product()
   fetch_and_render_products()

@@ -1,21 +1,35 @@
+body
+  margin: 0
+  border: 0
+  padding: 0
+  height: 100%
 #content_wrapper
-  width: 100%
-  position: relative
-
   #left_pane
-    width: 320px
-    height: 100%
     position: fixed
     top: 0
+    bottom: 0 
     left: 0
+    width: 320px
+    height: 100%
     background: grey
+    color: white
     form
       width: 90%
       margin: 20px auto
   #right_pane
-    left: 320px
-    padding: 20px
     position: absolute
+    top: 0 
+    left: 320px
+    right: 0
+    padding: 20px
+    margin-bottom: 40px
+    #loader
+      background: url(/assets/ajax-loader.gif) no-repeat center
+      background-size: 20px 20px
+      width: 20px
+      height: 20px
+      margin: 0px auto
+      display: none
 footer
   position: fixed
   bottom: 0px
