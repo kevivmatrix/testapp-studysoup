@@ -2,18 +2,20 @@
   <div id="left_pane">
     <%= form_tag products_path do %>
       <div class="form-group">
-        <%= text_field_tag :query, nil, placeholder: "Search", "class" => "form-control" %>
+        <%= text_field_tag :query, nil, placeholder: "Search", "class" => "form-control", id: "query_text_field" %>
       </div>
       <% Product.filter_enum.each do |filter| %>
         <div>
-          <%= check_box_tag(:filter) %>
-          <%= label_tag(:filter, filter) %>
+          <%= check_box_tag :filter, filter, nil, "class" => "filter_checkbox", id: "filter_checkbox_#{filter}" %>
+          <%= label_tag :filter, filter, "for" => "filter_checkbox_#{filter}" %>
         </div>
       <% end %>
     <% end %>
   </div>
   <div id="right_pane"></div>
 </div>
+
+<%= render partial: "template" %>
 
 <footer>
 
