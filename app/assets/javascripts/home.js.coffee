@@ -46,12 +46,17 @@ $ ->
     testapp.current_query = $("#query_text_field").val()
     fetch_and_render_products()
 
-  $('#query_text_field').keyup ->
+  $('#query_text_field').keyup (e)->
     clearTimeout typing_timer
     typing_timer = setTimeout(done_typing, done_typing_interval)
 
-  $('#query_text_field').keydown ->
-    clearTimeout typing_timer
+  $('#query_text_field').keydown (e)->
+    if e.which == 13
+      e.preventDefault()
+      fetch_and_render_products()
+      return false
+    else
+      clearTimeout typing_timer
 
   $(".filter_checkbox").change ->
     testapp.current_filter = _.map $('input[name="filter"]:checked'), (element)->
