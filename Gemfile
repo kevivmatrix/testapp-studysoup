@@ -44,3 +44,5 @@ end
 
 gem "twitter-bootstrap-rails"
 gem 'populator'
+
+gem 'rails_12factor', group: :production
